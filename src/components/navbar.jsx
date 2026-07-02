@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/logo.png'
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, NavLink } from "react-router-dom"
 import { useState, useEffect, useRef } from 'react'
 import { toast } from 'react-toastify'
 import { useGetCart } from '../hooks/useGetCart'
@@ -39,7 +39,7 @@ export default function Navbar() {
 
   }, [bar])
 
-  const { user} = useAuth()
+  const { user } = useAuth()
 
   const role = user?.role
 
@@ -154,8 +154,7 @@ export default function Navbar() {
         ></div>
       )}
       {/* 🔹 Navbar Bottom / Side Menu */}
-      <div
-        ref={sidebarRef}
+      <div ref={sidebarRef}
         className={`
       fixed md:static top-0 left-0 h-screen md:h-auto min-w-[50%] md:w-full
       bg-[#dcfff9] md:bg-green-600
@@ -176,9 +175,8 @@ export default function Navbar() {
           <div className="relative w-full md:w-auto">
             <select onChange={handleCategory}
               onClick={() => setBar(false)}
-              className="w-fit md:w-auto bg-white md:bg-transparent text-black md:text-white 
-              border border-gray-300 md:border-none p-2 rounded md:rounded-none
-      focus:outline-none cursor-pointer"
+              className="w-fit md:w-auto bg-white md:bg-transparent text-black md:text-white border 
+              border-gray-300 md:border-none p-2 rounded md:rounded-none focus:outline-none cursor-pointer"
             >
               <option className="text-black text-sm" value="All">All</option>
               <option className="text-black text-sm" value="Fruits">Fruits</option>
@@ -190,32 +188,30 @@ export default function Navbar() {
           <ul className='flex flex-col md:flex-row gap-2 md:gap-10 lg:gap-14 py-6 text-black md:text-white'>
 
             <li>
-              <Link
-                to={'/'}
+              <NavLink
+                to="/" end
                 onClick={() => setBar(false)}
-                className="
-        block px-3 py-2 rounded
-        hover:bg-gray-200 active:bg-gray-300
-        md:hover:bg-transparent md:px-0 md:py-0
-      "
+                className={({ isActive }) =>
+                  `block px-3 py-2 md:px-0 md:py-0
+     ${isActive ? "underline underline-offset-8" : ""}
+     hover:text-green-200`}
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link
-                to={'/products'}
+              <NavLink
+                to="/products"
                 onClick={() => setBar(false)}
-                className="
-        block px-3 py-2 rounded
-        hover:bg-gray-200 active:bg-gray-300
-        active:underline
-        md:hover:bg-transparent md:px-0 md:py-0
-      "
+                className={({ isActive }) =>
+                  `block px-3 py-2 md:px-0 md:py-0
+     ${isActive ? "underline underline-offset-8" : ""}
+     hover:text-green-200`
+                }
               >
                 Shop
-              </Link>
+              </NavLink>
             </li>
 
             {/* Dropdown */}
@@ -230,7 +226,7 @@ export default function Navbar() {
                 className="
         flex items-center gap-1
         w-full md:w-auto px-3 py-2 rounded
-        hover:bg-gray-200 active:bg-gray-300
+        hover:bg-gray-200 hover:text-green-200 active:bg-gray-300
         md:hover:bg-transparent md:px-0 md:py-0
       "
                 onClick={() => setDropdown(!dropdown)}
@@ -242,7 +238,7 @@ export default function Navbar() {
               <ul className={`
       ${dropdown ? "block" : "hidden"}
       md:absolute md:top-full md:left-0
-      pt-2 z-30 w-full md:w-auto
+      pt-2 z-300 w-full md:w-auto
     `}>
                 <div className='bg-white text-black rounded shadow-lg min-w-45'>
 
@@ -278,31 +274,31 @@ export default function Navbar() {
             </li>
 
             <li>
-              <Link
-                to={'/about'}
+              <NavLink
+                to="/about"
                 onClick={() => setBar(false)}
-                className="
-        block px-3 py-2 rounded
-        hover:bg-gray-200 active:bg-gray-300
-        md:hover:bg-transparent md:px-0 md:py-0
-      "
+                className={({ isActive }) =>
+                  `block px-3 py-2 md:px-0 md:py-0
+     ${isActive ? "underline underline-offset-8" : ""}
+     hover:text-green-200`
+                }
               >
                 About
-              </Link>
+              </NavLink>
             </li>
 
             <li>
-              <Link
-                to={'/contact'}
+              <NavLink
+                to="/contact"
                 onClick={() => setBar(false)}
-                className="
-        block px-3 py-2 rounded
-        hover:bg-gray-200 active:bg-gray-300
-        md:hover:bg-transparent md:px-0 md:py-0
-      "
+                className={({ isActive }) =>
+                  `block px-3 py-2 md:px-0 md:py-0
+     ${isActive ? "underline underline-offset-8" : ""}
+     hover:text-green-200`
+                }
               >
                 Contact
-              </Link>
+              </NavLink>
             </li>
 
           </ul>
