@@ -40,8 +40,8 @@ export default function Cart() {
       <div>
         <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {products.length === 0 ? (
-            <div className="bg-white rounded-xl shadow p-10 text-center">
-              <h2 className="text-2xl font-bold">🛒 Cart is Empty</h2>
+            <div className="text-center p-10">
+              <h2 className="text-xl font-bold">🛒 Cart is Empty</h2>
               <p className="text-gray-500 mt-2">
                 Add some products to your cart.
               </p>

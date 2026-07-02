@@ -1,7 +1,10 @@
 import { useWishlist, useRemoveWishlist } from "../hooks/useWishlist";
 import { useAuth } from "../context/authContext";
+import {useNavigate} from 'react-router-dom'
 
 export default function Wishlist() {
+
+  const navigate=useNavigate()
 
   const { user, isLoading: authLoading } = useAuth();
 
@@ -27,11 +30,22 @@ export default function Wishlist() {
   }
 
   if (!data || data.length === 0) {
-    return <h1 className="text-center mt-10">No wishlist items ❤️</h1>;
+    return <div className="text-center flex flex-col justify-center items-center min-h-dvh bg-[#dcfff9]">
+      <h1>No wishlist items ❤️</h1>
+      <p className="text-gray-500 mt-2">
+                Add some products to your wishlist.
+              </p>
+              <button
+                onClick={() => navigate("/products")}
+                className="mt-5 bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700"
+              >
+                Continue Shopping
+              </button>
+      </div>;
   }
 
   return (
-    <div className="p-6 bg-[#dcfff9]">
+    <div className="p-6 bg-[#dcfff9] min-h-dvh">
 
       <h1 className="text-3xl font-bold mb-6">❤️ Wishlist</h1>
 
